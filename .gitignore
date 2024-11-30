@@ -16,4 +16,4 @@
 .history
 .ionide
 
-.gitignore
+.env

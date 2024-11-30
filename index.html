@@ -11,102 +11,125 @@
     <div class="grid">
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
-            </div>
-        </div>
-        <div class="grid__item">
-            <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
 
         <!-- Subgrid -->
-
         <div class="grid__item grid__item--subgrid">
             <div class="subgrid">
                 <div class="subgrid__item">
-                    <img src="/img/Webb.webp" alt="">
+                    <img class="apod-image" alt="">
                 </div>
                 <div class="subgrid__item">
-                    <img src="/img/Webb.webp" alt="">
+                    <img class="apod-image" alt="">
                 </div>
                 <div class="subgrid__item">
-                    <img src="/img/Webb.webp" alt="">
+                    <img class="apod-image" alt="">
                 </div>
                 <div class="subgrid__item">
-                    <img src="/img/Webb.webp" alt="">
+                    <img class="apod-image" alt="">
                 </div>
             </div>
             <div class="subgrid__overlay">Special Images</div>
         </div>
 
-
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__content">
-                <img src="/img/Webb.webp" alt="">
+                <img class="apod-image" alt="">
+            </div>
+        </div>
+        <div class="grid__item">
+            <div class="grid__content">
+                <img class="apod-image" alt="">
             </div>
         </div>
     </div>
-    
+
+    <script>
+
+        // TODO: 
+        const apiKey = 'YOUR_API_KEY_HERE';
+        
+        const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=19`;
+
+        async function fetchApodImages() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                const images = document.querySelectorAll('.apod-image');
+                
+                images.forEach((img, index) => {
+                    img.src = data[index].url;
+                    img.alt = data[index].title;
+                });
+            } catch (error) {
+                console.error('Error al obtener las imágenes de APOD:', error);
+            }
+        }
+
+        fetchApodImages();
+    </script>
 </body>
 </html>
